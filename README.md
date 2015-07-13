@@ -1,7 +1,6 @@
 #PHP DevEnviroment
 
-**You need Administrator/root privilege to run the environment**
-**Or have write access to hots file**
+ **You need Administrator/root privilege to run the environment**
 
 ## Software Requirements
 
@@ -12,6 +11,7 @@
 ## Install Vagrant Host Updater PlugIn
 
 * vagrant plugin install vagrant-hostsupdater
+* vagrant plugin install vagrant-winnfsd (Only Windows)
 
 ## Starting virtual machinie
 

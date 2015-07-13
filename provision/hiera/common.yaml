@@ -3,3 +3,9 @@
 applications:
     - app.valet.net
     - staging.valet.net
+    
+vagrant_vm:
+  synced_folder:
+    puppet:
+      source: ./provision/puppet
+      target: /mnt/provision/puppet

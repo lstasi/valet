@@ -1,10 +1,12 @@
 class valet::phpmyadmin {
   require valet::devtools
+  include valet::php
+  include valet::httpd
 
   /*
    * Install phpmyadmin from repo
    */
-  package { "phpmyadmin": ensure => "latest" }
+  package { "phpmyadmin": ensure => "latest",require => Package['php56w', 'httpd'] }
 
   /*
    * Set phpMyAdmin conf from template
