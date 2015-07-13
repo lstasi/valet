@@ -1,0 +1,10 @@
+composer https://github.com/Brainsware/puppet-composer
+mysql http://github.com/puppetlabs/puppetlabs-mysql
+docker_platform https://github.com/puppetlabs/puppetlabs-docker_platform
+apache https://github.com/puppetlabs/puppetlabs-apache
+firewall https://github.com/puppetlabs/puppetlabs-firewall
+jenkins4php https://github.com/rafaelfelix/puppet-jenkins4php
+php-build https://github.com/php-build/php-build
+phpmyadmin https://github.com/justicel/puppet-phpmyadmin
+redis https://forge.puppetlabs.com/dwerder/redis
+nginx https://github.com/jfryman/puppet-nginx
