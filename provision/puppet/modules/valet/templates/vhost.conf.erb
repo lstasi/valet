@@ -1,0 +1,14 @@
+<VirtualHost *:80>
+    ServerAdmin admin@localhost
+    DocumentRoot /var/www/html/services/<%= @name -%>/web
+    
+    RewriteEngine On
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.*)$ /index_dev.php/$1 [L]
+    
+    Options Indexes FollowSymLinks
+    ServerName  <%= @name -%>
+    ErrorLog logs/<%= @name -%>.error_log
+    CustomLog logs/<%= @name -%>.access_log common
+</VirtualHost>

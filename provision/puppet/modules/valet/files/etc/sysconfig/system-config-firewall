@@ -1,0 +1,7 @@
+# Configuration file for system-config-firewall
+
+--enabled
+--port=8080:tcp
+--port=8081:tcp
+--service=ssh
+--service=http

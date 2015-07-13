@@ -1,0 +1,10 @@
+-- CREATE USER 'admin'@'%' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON <%=@db_name-%>.* TO 'admin'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;
+-- CREATE USER 'admin'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON <%=@db_name-%>.* TO 'admin'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;
+
+DROP DATABASE IF EXISTS <%=@db_name-%>;
+
+CREATE DATABASE  IF NOT EXISTS `<%=@db_name-%>` /*!40100 DEFAULT CHARACTER SET utf8 */;

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Ant plugin="ant@1.2">
+      <targets></targets>
+    </hudson.tasks.Ant>
+  </builders>
+  <publishers/>
+  <buildWrappers>
+    <hudson.plugins.ansicolor.AnsiColorBuildWrapper plugin="ansicolor@0.4.1">
+      <colorMapName>xterm</colorMapName>
+    </hudson.plugins.ansicolor.AnsiColorBuildWrapper>
+    <hpi.CopyDataToWorkspacePlugin plugin="copy-data-to-workspace-plugin@1.0">
+      <folderPath>/vagrant/services/<%=@name-%></folderPath>
+      <makeFilesExecutable>false</makeFilesExecutable>
+      <deleteFilesAfterBuild>false</deleteFilesAfterBuild>
+    </hpi.CopyDataToWorkspacePlugin>
+  </buildWrappers>
+</project>

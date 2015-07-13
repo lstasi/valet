@@ -1,0 +1,5 @@
+:backends: yaml
+:yaml:
+  :datadir: /vagrant/provision/hiera
+:hierarchy: common
+:logger: console

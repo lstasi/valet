@@ -1,0 +1,3 @@
+[submodule "DesignPatternsPHP"]
+	path = DesignPatternsPHP
+	url = https://github.com/domnikl/DesignPatternsPHP.git
