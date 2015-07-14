@@ -1,18 +1,27 @@
 class valet::app_create {
   require valet::app_list
   require valet::composer
-  $app_list = $valet::app_list::applications
-
+  
+  $applications_list = $valet::app_list::applications_list
+  
   /*
    * Run Create Application
    */
-  create_app { $app_list: }
+  create_app { $applications_list: }
+
 }
 
 define create_app () {
   /*
+   * Get App Data
+   */
+   $applications_data = $valet::app_list::applications
+   $appdata=$applications_data[$name]
+  /*
    * Apache Application Vhost from template
    */
+  $vhost = $appdata['vhost']
+  
   file { "/etc/httpd/conf.d/sites.d/$name.conf":
     ensure  => 'file',
     content => template("valet/vhost.conf.erb"),
@@ -30,7 +39,7 @@ define create_app () {
   /*
    * Create DB Name, replace dot for dash
    */
-  $db_name = inline_template('<%= @name.gsub(/\./, "_") %>')
+  $db_name = $appdata['dbname']
 
   /*
    * Database Create Script for application usting template
@@ -40,7 +49,6 @@ define create_app () {
     content => template("valet/create_db.sql.erb"),
     require => File["/var/www/html/services/${name}/db"]
   }
-
   /*
    * Create Jenkins Job Folder
    */
@@ -63,10 +71,12 @@ define create_app () {
   }
 
   /*
-   * Create Silex Skeleton Application using Composer
+   * Create Application using Composer
+   * Silex Skeleton By default
    */
+  $command = $appdata['create']
   exec { "build-app-${name}":
-    command     => "composer create-project fabpot/silex-skeleton ${name} ~2.0dev",
+    command     => $command,
     user        => "vagrant",
     path        => "/usr/bin:/bin:/usr/sbin:/sbin",
     environment => ["HOME=/home/vagrant"],

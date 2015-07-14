@@ -9,7 +9,7 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", path: "provision/install_repos.sh"
   
   if Vagrant.has_plugin?("vagrant-winnfsd")
-    #config.winnfsd.logging = "on"
+    config.winnfsd.logging = "off"
     config.winnfsd.uid = 99
     config.winnfsd.gid = 99
   end
@@ -38,13 +38,19 @@ Vagrant.configure(2) do |config|
 		v.cpus = 4
         v.customize ["modifyvm", :id, "--vram", "9"]
   end
-  config.vm.network "private_network", ip: "192.168.56.10"
-  
+
   config.vm.hostname = "dev.valet.net"
   config.vm.network "private_network", ip: "192.168.56.10"
   
+  applications=hieraCommonValues['applications']
+  aliases=[]
+  
+  applications.each do |key, app|
+      aliases.push(app["vhost"])
+  end
+  
   if Vagrant.has_plugin?("vagrant-hostsupdater")
-    config.hostsupdater.aliases = hieraCommonValues['applications']
+    config.hostsupdater.aliases = aliases
   else
     puts "Hosts names won't be accessible from your host machine, because vagrant hostsupdater plugin is not installed"
     puts "To install plugin use:"

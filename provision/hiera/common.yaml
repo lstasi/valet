@@ -1,8 +1,15 @@
 # All aliases assigned to 192.168.56.10 (i.e. VHOSTS)
 #
+---
 applications:
-    - app.valet.net
-    - staging.valet.net
+  silexapp:
+    create: "composer create-project fabpot/silex-skeleton silexapp ~2.0dev"
+    vhost: "silexapp.valet.net"
+    dbname: "silexapp"
+  cleanapp:
+    create: "mkdir -p cleanapp/web; echo '<?php phpinfo()?>' >web/index.php"
+    vhost: "cleanapp.valet.net"
+    dbname: "cleanapp"
     
 vagrant_vm:
   synced_folder:
