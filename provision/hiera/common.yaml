@@ -7,7 +7,7 @@ applications:
     vhost: "silexapp.valet.net"
     dbname: "silexapp"
   cleanapp:
-    create: "mkdir -p cleanapp/web; echo '<?php phpinfo()?>' >web/index.php"
+    create: "mkdir -p cleanapp/web; echo \"<?php phpinfo()?>\" >web/index.php"
     vhost: "cleanapp.valet.net"
     dbname: "cleanapp"
     
