@@ -2,17 +2,19 @@
 #
 ---
 applications:
-  silexapp:
-    create: "composer create-project fabpot/silex-skeleton silexapp ~2.0dev"
-    vhost: "silexapp.valet.net"
-    dbname: "silexapp"
-  cleanapp:
+  cloudsecret:
     create: "mkdir -p cleanapp/web; echo \"<?php phpinfo()?>\" >web/index.php"
-    vhost: "cleanapp.valet.net"
-    dbname: "cleanapp"
+    vhost: "cloudsecret.net"
+    dbname: "cloudsecret"
     
 vagrant_vm:
   synced_folder:
     puppet:
       source: ./provision/puppet
       target: /mnt/provision/puppet
+    project:
+      source: ../
+      target: /project
+    workspace:
+      source: ../../
+      target: /workspace

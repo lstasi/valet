@@ -14,10 +14,10 @@ class valet::app {
   /*
    * Configure Service to start and run on boot
    */
-  service { ["httpd", "mysqld", "redis", "docker", "jenkins","iptables"]:
+  service { ["httpd", "mysqld", "redis","iptables"]:
     ensure  => running,
     enable  => true,
-    require => Package["mysql-server", "httpd", "redis", "docker-io", "jenkins"]
+    require => Package["mysql-server", "httpd", "redis"]
   }
 
 }
